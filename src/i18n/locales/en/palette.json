@@ -1,0 +1,12 @@
+{
+  "addField": "Add a field",
+  "hint": "Click or drag onto the form",
+  "searchPlaceholder": "Search fields…",
+  "noMatch": "No field matches “{query}”.",
+  "popular": "Most used",
+  "hide": "Hide fields",
+  "show": "Show fields",
+  "notAvailable": "Not available",
+  "blockedTitle": "Not available: {reason}",
+  "warningTitle": "Think twice: {reason}"
+}

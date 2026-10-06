@@ -1,0 +1,17 @@
+{
+  "title": "Sprog",
+  "intro": "Skriv formularen én gang, og oversæt den så. Besøgende får deres browsers sprog, hvis du har det, ellers formularens sprog.",
+  "writtenIn": "Formularen er skrevet på",
+  "translate": "Oversæt",
+  "removeLanguage": "Fjern {name}",
+  "add": "Tilføj et sprog",
+  "choose": "Vælg et sprog…",
+  "detect": "Find den besøgendes sprog",
+  "detectDescription": "Bruger browserens sprog, når det matcher et af dine.",
+  "switcher": "Sprogvælger på formularen",
+  "switcherHint": "Lader de besøgende selv skifte sprog.",
+  "none": "Ingen",
+  "flags": "Flag",
+  "dropdown": "Rullemenu",
+  "forceHint": "Sådan tvinger du et sprog fra din side: {code}"
+}

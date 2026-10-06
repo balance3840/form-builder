@@ -1,0 +1,12 @@
+{
+  "addField": "Lägg till ett fält",
+  "hint": "Klicka eller dra till formuläret",
+  "searchPlaceholder": "Sök fält…",
+  "noMatch": "Inget fält matchar ”{query}”.",
+  "popular": "Mest använda",
+  "hide": "Dölj fält",
+  "show": "Visa fält",
+  "notAvailable": "Inte tillgänglig",
+  "blockedTitle": "Inte tillgänglig: {reason}",
+  "warningTitle": "Tänk efter: {reason}"
+}

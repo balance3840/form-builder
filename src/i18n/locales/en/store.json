@@ -1,0 +1,17 @@
+{
+  "untitledForm": "Untitled form",
+  "submit": "Submit",
+  "copyOf": "{label} (copy)",
+  "equalColumns_one": "{count} equal",
+  "equalColumns_other": "{count} equal",
+  "halfWidth": "Half width",
+  "fractionWidth": "{fraction} width",
+  "tabN": "Tab {n}",
+  "stepN": "Step {n}",
+  "thankYouTitle": "Thank you!",
+  "thankYouText": "We've received your response. We'll get back to you soon.",
+  "removeAskTitle": "Remove this question?",
+  "removeAskText": "Some people have already answered it. Their answers are not deleted: you can still find them in each response, in the summary and in downloads, marked as “removed”. New visitors will no longer see the question.",
+  "removeAskConfirm": "Remove question",
+  "removeAskUndo": "Changed your mind? You can undo this right after."
+}

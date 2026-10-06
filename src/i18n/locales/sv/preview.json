@@ -1,0 +1,10 @@
+{
+  "desktop": "Dator",
+  "tablet": "Surfplatta",
+  "phone": "Mobil",
+  "autoLanguage": "Automatiskt (webbläsare)",
+  "restart": "Börja om",
+  "submittedData": "Skickade data",
+  "submittedHint": "Det här är datan som ditt formulär skickar.",
+  "dismiss": "Stäng"
+}

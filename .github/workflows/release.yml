@@ -1,0 +1,69 @@
+name: Release
+
+# Publishes the package to npm and creates a GitHub release when a version tag is pushed:
+#   npm version 0.3.0 && git push --follow-tags        (or: git tag v0.3.0 && git push origin v0.3.0)
+# Publish @restrella/form-generator first: this package needs it as a peer dependency.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write   # the GitHub release
+  id-token: write   # npm provenance
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # package.json links the generator from the sibling folder (file:../form-generator), so check out both side by side
+      - uses: actions/checkout@v4
+        with:
+          path: form-builder
+      - uses: actions/checkout@v4
+        with:
+          repository: balance3840/form-generator
+          path: form-generator
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: The tag must match package.json
+        working-directory: form-builder
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [ "v$VERSION" != "$GITHUB_REF_NAME" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match package.json version $VERSION"; exit 1
+          fi
+          # 0.3.0-beta.1 -> npm tag "beta"; plain versions -> "latest"
+          case "$VERSION" in
+            *-*) PRE=$(echo "$VERSION" | sed -E 's/^[^-]+-([a-zA-Z]+).*/\1/'); echo "NPM_TAG=$PRE" >> "$GITHUB_ENV"; echo "PRERELEASE=--prerelease" >> "$GITHUB_ENV" ;;
+            *)   echo "NPM_TAG=latest" >> "$GITHUB_ENV"; echo "PRERELEASE=" >> "$GITHUB_ENV" ;;
+          esac
+
+      - name: Build the generator
+        working-directory: form-generator
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'   # the browser is only for the generator's e2e tests
+        run: npm ci && npm run build
+
+      - name: Build the builder
+        working-directory: form-builder
+        run: |
+          npm ci
+          npm run i18n:check
+          npm run build:lib
+
+      - name: Update npm
+        run: npm install -g npm@latest
+
+      - name: Publish to npm
+        working-directory: form-builder
+        run: npm publish --provenance --access public --tag "$NPM_TAG"
+
+      - name: GitHub release
+        working-directory: form-builder
+        run: gh release create "$GITHUB_REF_NAME" --generate-notes $PRERELEASE
+        env:
+          GH_TOKEN: ${{ github.token }}

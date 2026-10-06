@@ -1,0 +1,17 @@
+{
+  "title": "Languages",
+  "intro": "Write the form once, then translate it. Visitors get their browser language when you have it, otherwise the form language.",
+  "writtenIn": "Form is written in",
+  "translate": "Translate",
+  "removeLanguage": "Remove {name}",
+  "add": "Add a language",
+  "choose": "Choose a language…",
+  "detect": "Detect the visitor's language",
+  "detectDescription": "Uses the browser language when it matches one of yours.",
+  "switcher": "Language switcher on the form",
+  "switcherHint": "Lets visitors change language themselves.",
+  "none": "None",
+  "flags": "Flags",
+  "dropdown": "Dropdown",
+  "forceHint": "To force a language from your page: {code}"
+}

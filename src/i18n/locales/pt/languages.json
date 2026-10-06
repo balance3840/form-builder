@@ -1,0 +1,17 @@
+{
+  "title": "Idiomas",
+  "intro": "Escreva o formulário uma vez e depois traduza-o. Os visitantes veem o idioma do navegador quando este existir; caso contrário, o idioma do formulário.",
+  "writtenIn": "O formulário está escrito em",
+  "translate": "Traduzir",
+  "removeLanguage": "Remover {name}",
+  "add": "Adicionar um idioma",
+  "choose": "Escolha um idioma…",
+  "detect": "Detetar o idioma do visitante",
+  "detectDescription": "Usa o idioma do navegador quando este corresponde a um dos seus.",
+  "switcher": "Seletor de idioma no formulário",
+  "switcherHint": "Permite que os visitantes mudem de idioma.",
+  "none": "Nenhum",
+  "flags": "Bandeiras",
+  "dropdown": "Lista pendente",
+  "forceHint": "Para forçar um idioma a partir da sua página: {code}"
+}

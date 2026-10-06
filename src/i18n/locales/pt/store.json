@@ -1,0 +1,17 @@
+{
+  "untitledForm": "Formulário sem título",
+  "submit": "Enviar",
+  "copyOf": "{label} (cópia)",
+  "equalColumns_one": "{count} igual",
+  "equalColumns_other": "{count} iguais",
+  "halfWidth": "Meia largura",
+  "fractionWidth": "{fraction} da largura",
+  "tabN": "Separador {n}",
+  "stepN": "Etapa {n}",
+  "thankYouTitle": "Obrigado!",
+  "thankYouText": "Recebemos a sua resposta. Entraremos em contacto brevemente.",
+  "removeAskTitle": "Remover esta pergunta?",
+  "removeAskText": "Algumas pessoas já responderam. As respostas não são apagadas: continuará a encontrá-las em cada resposta, no resumo e nas transferências, marcadas como “removida”. Os novos visitantes deixam de ver a pergunta.",
+  "removeAskConfirm": "Remover pergunta",
+  "removeAskUndo": "Mudou de ideias? Pode desfazer logo a seguir."
+}

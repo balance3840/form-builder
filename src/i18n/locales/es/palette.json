@@ -1,0 +1,12 @@
+{
+  "addField": "Añadir un campo",
+  "hint": "Haz clic o arrastra al formulario",
+  "searchPlaceholder": "Buscar campos…",
+  "noMatch": "Ningún campo coincide con “{query}”.",
+  "popular": "Más usados",
+  "hide": "Ocultar campos",
+  "show": "Mostrar campos",
+  "notAvailable": "No disponible",
+  "blockedTitle": "No disponible: {reason}",
+  "warningTitle": "Piénsalo bien: {reason}"
+}

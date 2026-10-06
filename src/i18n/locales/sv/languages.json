@@ -1,0 +1,17 @@
+{
+  "title": "Språk",
+  "intro": "Skriv formuläret en gång och översätt det sedan. Besökare får webbläsarens språk om du har det, annars formulärets språk.",
+  "writtenIn": "Formuläret är skrivet på",
+  "translate": "Översätt",
+  "removeLanguage": "Ta bort {name}",
+  "add": "Lägg till ett språk",
+  "choose": "Välj ett språk…",
+  "detect": "Känn av besökarens språk",
+  "detectDescription": "Använder webbläsarens språk när det matchar något av dina.",
+  "switcher": "Språkväljare i formuläret",
+  "switcherHint": "Låter besökarna själva byta språk.",
+  "none": "Ingen",
+  "flags": "Flaggor",
+  "dropdown": "Rullgardinsmeny",
+  "forceHint": "Så tvingar du fram ett språk från din sida: {code}"
+}

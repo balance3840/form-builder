@@ -1,0 +1,10 @@
+{
+  "desktop": "Desktop",
+  "tablet": "Tablet",
+  "phone": "Phone",
+  "autoLanguage": "Automatic (browser)",
+  "restart": "Restart",
+  "submittedData": "Submitted data",
+  "submittedHint": "This is the data your form sends.",
+  "dismiss": "Dismiss"
+}

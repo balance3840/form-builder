@@ -1,0 +1,17 @@
+{
+  "untitledForm": "Namnlöst formulär",
+  "submit": "Skicka",
+  "copyOf": "{label} (kopia)",
+  "equalColumns_one": "{count} lika",
+  "equalColumns_other": "{count} lika",
+  "halfWidth": "Halv bredd",
+  "fractionWidth": "{fraction} bredd",
+  "tabN": "Flik {n}",
+  "stepN": "Steg {n}",
+  "thankYouTitle": "Tack!",
+  "thankYouText": "Vi har tagit emot ditt svar. Vi återkommer snart.",
+  "removeAskTitle": "Ta bort den här frågan?",
+  "removeAskText": "Några har redan svarat på den. Svaren raderas inte: du hittar dem fortfarande i varje svar, i sammanfattningen och i nedladdningar, markerade som ”borttagen”. Nya besökare ser inte längre frågan.",
+  "removeAskConfirm": "Ta bort fråga",
+  "removeAskUndo": "Ångrar du dig? Du kan ångra direkt efter."
+}

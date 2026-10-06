@@ -1,0 +1,10 @@
+{
+  "desktop": "Escritorio",
+  "tablet": "Tableta",
+  "phone": "Móvil",
+  "autoLanguage": "Automático (navegador)",
+  "restart": "Reiniciar",
+  "submittedData": "Datos enviados",
+  "submittedHint": "Estos son los datos que envía tu formulario.",
+  "dismiss": "Descartar"
+}

@@ -1,0 +1,10 @@
+{
+  "desktop": "Computer",
+  "tablet": "Tablet",
+  "phone": "Mobil",
+  "autoLanguage": "Automatisk (browser)",
+  "restart": "Start forfra",
+  "submittedData": "Indsendte data",
+  "submittedHint": "Det er disse data, din formular sender.",
+  "dismiss": "Luk"
+}

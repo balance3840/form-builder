@@ -1,0 +1,17 @@
+{
+  "untitledForm": "Formular uden titel",
+  "submit": "Send",
+  "copyOf": "{label} (kopi)",
+  "equalColumns_one": "{count} lige store",
+  "equalColumns_other": "{count} lige store",
+  "halfWidth": "Halv bredde",
+  "fractionWidth": "{fraction} bredde",
+  "tabN": "Fane {n}",
+  "stepN": "Trin {n}",
+  "thankYouTitle": "Tak!",
+  "thankYouText": "Vi har modtaget dit svar. Vi vender snart tilbage.",
+  "removeAskTitle": "Fjern dette spørgsmål?",
+  "removeAskText": "Nogle har allerede besvaret det. Svarene bliver ikke slettet: du kan stadig finde dem i hvert svar, i oversigten og i downloads, markeret som “fjernet”. Nye besøgende ser ikke længere spørgsmålet.",
+  "removeAskConfirm": "Fjern spørgsmål",
+  "removeAskUndo": "Fortryder du? Du kan fortryde lige efter."
+}

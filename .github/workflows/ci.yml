@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# a newer run on the same branch or pull request replaces the one still running
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # package.json links the generator from the sibling folder (file:../form-generator), so check out both side by side
+      - uses: actions/checkout@v4
+        with:
+          path: form-builder
+      - uses: actions/checkout@v4
+        with:
+          repository: balance3840/form-generator
+          path: form-generator
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build the generator
+        working-directory: form-generator
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'   # the browser is only for the generator's e2e tests
+        run: npm ci && npm run build
+      - name: Build the builder
+        working-directory: form-builder
+        run: |
+          npm ci
+          npm run i18n:check
+          npm run build:lib
+          npm run build

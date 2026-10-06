@@ -1,0 +1,17 @@
+{
+  "untitledForm": "Formulario sin título",
+  "submit": "Enviar",
+  "copyOf": "{label} (copia)",
+  "equalColumns_one": "{count} igual",
+  "equalColumns_other": "{count} iguales",
+  "halfWidth": "Medio ancho",
+  "fractionWidth": "{fraction} de ancho",
+  "tabN": "Pestaña {n}",
+  "stepN": "Paso {n}",
+  "thankYouTitle": "¡Gracias!",
+  "thankYouText": "Hemos recibido tu respuesta. Te responderemos pronto.",
+  "removeAskTitle": "¿Quitar esta pregunta?",
+  "removeAskText": "Algunas personas ya la respondieron. Sus respuestas no se borran: las seguirás encontrando en cada respuesta, en el resumen y en las descargas, marcadas como “eliminada”. Las nuevas visitas ya no verán la pregunta.",
+  "removeAskConfirm": "Quitar pregunta",
+  "removeAskUndo": "¿Te arrepientes? Puedes deshacerlo justo después."
+}

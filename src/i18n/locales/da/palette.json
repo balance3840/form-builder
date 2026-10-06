@@ -1,0 +1,12 @@
+{
+  "addField": "Tilføj et felt",
+  "hint": "Klik eller træk ind på formularen",
+  "searchPlaceholder": "Søg i felter…",
+  "noMatch": "Intet felt matcher “{query}”.",
+  "popular": "Mest brugte",
+  "hide": "Skjul felter",
+  "show": "Vis felter",
+  "notAvailable": "Ikke tilgængelig",
+  "blockedTitle": "Ikke tilgængelig: {reason}",
+  "warningTitle": "Tænk dig om: {reason}"
+}
