@@ -1,6 +1,6 @@
 # Form visual builder
 
-**[📖 Read the documentation → balance3840.github.io/form-builder/](https://balance3840.github.io/form-builder/)**
+**[📖 Read the documentation → balance3840.github.io/form-builder/](https://balance3840.github.io/form-builder/)** · **[▶ Try it in the playground](https://balance3840.github.io/form-builder/playground)**
 
 
 A visual editor for forms that writes the [form-generator](https://github.com/balance3840/form-generator) v2 JSON under the hood.

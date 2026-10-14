@@ -1,11 +1,11 @@
 name: Docs
 
-# Builds the documentation site (website/) and publishes it to GitHub Pages.
+# Builds the documentation site (website/) and the playground (the standalone builder) and publishes them to GitHub Pages.
 # In the repository settings, set Pages > Source to "GitHub Actions".
 on:
   push:
     branches: [main]
-    paths: ['website/**', 'README.md', '.github/workflows/docs.yml']
+    paths: ['website/**', 'src/**', 'README.md', '.github/workflows/docs.yml']
   workflow_dispatch:
 
 permissions:
@@ -20,22 +20,42 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
+      # the builder links the generator from the sibling folder (file:../form-generator), so check out both side by side
       - uses: actions/checkout@v4
+        with:
+          path: form-builder
+      - uses: actions/checkout@v4
+        with:
+          repository: balance3840/form-generator
+          path: form-generator
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: website/package-lock.json
-      - run: npm ci
-        working-directory: website
-      - run: npm run split   # website/docs is generated from README.md
-        working-directory: website
-      - run: npm run build
-        working-directory: website
+          cache-dependency-path: |
+            form-builder/package-lock.json
+            form-builder/website/package-lock.json
+      - name: Build the generator
+        working-directory: form-generator
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+        run: npm ci && npm run build
+      - name: Build the playground
+        working-directory: form-builder
+        run: |
+          npm ci
+          npm run build:playground
+      - name: Build the docs
+        working-directory: form-builder/website
+        run: |
+          npm ci
+          npm run split   # website/docs is generated from README.md
+          npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: website/build
+          path: form-builder/website/build
 
   deploy:
     needs: build

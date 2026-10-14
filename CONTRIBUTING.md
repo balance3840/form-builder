@@ -57,7 +57,10 @@ npm start       # local preview
 npm run build   # static site in website/build
 ```
 
-Pushes to `main` publish it to GitHub Pages (`.github/workflows/docs.yml`). To keep the docs of a release when you
+The playground on the site is the standalone app: `npm run build:playground` builds it into `website/static/playground-app`
+(git-ignored), and the site shows it on its Playground page.
+
+Pushes to `main` publish the site and the playground to GitHub Pages (`.github/workflows/docs.yml`). To keep the docs of a release when you
 start changing them for the next one: `npm run docs:version -- 0.3`, then list the version in
 `website/docusaurus.config.mjs`.
 

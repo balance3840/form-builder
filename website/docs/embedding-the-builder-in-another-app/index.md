@@ -14,7 +14,6 @@ const builder = mountFormBuilder(document.getElementById('host')!, {
   document: savedDocument,                 // the v2 JSON, or nothing for a new form
   prefillSources: [{ key: 'contact.phone', label: 'Phone', group: 'Primary contact', kind: 'tel' }],
   defaultPhoneCountry: 'dk',               // optional: new phone fields start with +45 (default: the form's language)
-  hostChoicesHint: 'The choices come from your list…',  // optional: what to say on questions whose choices your app fills in
   templateCategories: ['general', 'feedback'], // optional: limit the template picker to some groups (or list `templateIds`)
   onSave: async doc => { await api.save(doc); builder.markSaved(); },
   autosave: true,                          // optional: save by itself after edits, no Save button. On failure throw an Error:

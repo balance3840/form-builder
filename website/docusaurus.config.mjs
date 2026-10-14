@@ -58,6 +58,7 @@ const config = {
         title: 'Form builder',
         items: [
           { type: 'docSidebar', sidebarId: 'docs', position: 'left', label: 'Documentation' },
+          { to: '/playground', position: 'left', label: 'Playground' },
           { type: 'docsVersionDropdown', position: 'right', dropdownActiveClassDisabled: true },
           { href: 'https://github.com/balance3840/form-builder', label: 'GitHub', position: 'right' },
         ],
