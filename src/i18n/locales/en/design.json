@@ -135,5 +135,6 @@
   "fontKind.mono": "Mono",
   "fontKind.display": "Display",
   "fontKind.hand": "Handwriting",
-  "equalWidth": "Halves"
+  "equalWidth": "Halves",
+  "previewFailed": "Can't show a preview. Check the address."
 }

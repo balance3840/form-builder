@@ -135,5 +135,6 @@
   "fontKind.mono": "Mono",
   "fontKind.display": "Display",
   "fontKind.hand": "Manuscrito",
-  "equalWidth": "Metades"
+  "equalWidth": "Metades",
+  "previewFailed": "Não é possível mostrar uma pré-visualização. Verifique o endereço."
 }

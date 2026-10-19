@@ -329,7 +329,7 @@ function OptionsEditor({ field }: { field: FormField }) {
                 <input class="ui-input" value={o.label} placeholder={optionName(i + 1)} onInput={e => setLabel(i, (e.target as HTMLInputElement).value)} />
  {field.type === 'pictureChoice' && (
                   <div class="option-image">
-                    <ImagePicker value={(o as any).image} placeholder={t('fieldInspector.optionImage')} onChange={v => set(options.map((x, idx) => (idx === i ? { ...x, image: v || undefined } : x)))} />
+                    <ImagePicker compact value={(o as any).image} placeholder={t('fieldInspector.optionImage')} onChange={v => set(options.map((x, idx) => (idx === i ? { ...x, image: v || undefined } : x)))} />
                   </div>
                 )}
                 {cards && <input class="ui-input option-desc" value={(o as any).description || ''} placeholder={t('fieldInspector.optionDescription')} onInput={e => set(options.map((x, idx) => (idx === i ? { ...x, description: (e.target as HTMLInputElement).value || undefined } : x)))} />}
@@ -819,7 +819,7 @@ function LikertSettings({ field }: { field: FormField }) {
           extra={(item, i) => (
             <div class="likert-point-look">
               {style === 'emoji' && <input class="ui-input emoji-input" value={item.emoji || ''} placeholder={likertEmoji(i, points.length)} aria-label={t('fieldInspector.likertEmoji')} onInput={e => setPoint(i, { emoji: (e.target as HTMLInputElement).value.trim() || undefined })} />}
-              {style === 'images' && <ImagePicker value={item.image} placeholder={t('fieldInspector.optionImage')} onChange={v => setPoint(i, { image: v || undefined })} />}
+              {style === 'images' && <ImagePicker compact value={item.image} placeholder={t('fieldInspector.optionImage')} onChange={v => setPoint(i, { image: v || undefined })} />}
               {colorMode === 'custom' && <input type="color" class="likert-color-input" value={item.color || '#888888'} title={t('fieldInspector.likertPointColor')} onInput={e => setPoint(i, { color: (e.target as HTMLInputElement).value })} />}
             </div>
           )}
@@ -921,9 +921,23 @@ function TypeSettings({ field }: { field: FormField }) {
       );
     case 'rating':
       return (
-        <Field label={t('fieldInspector.stars')}>
-          <Segmented value={config.max || 5} onChange={v => setConfig({ max: v })} options={[3, 5, 7, 10].map(n => ({ value: n, label: String(n) }))} />
-        </Field>
+        <div class="stack">
+          <Field label={t('fieldInspector.stars')}>
+            <Segmented value={config.max || 5} onChange={v => setConfig({ max: v })} options={[3, 5, 7, 10].map(n => ({ value: n, label: String(n) }))} />
+          </Field>
+          <Field label={t('fieldInspector.starSize')} hint={config.size === 'full' ? t('fieldInspector.starSizeFullHint') : undefined}>
+            <Segmented
+              value={config.size || 'medium'}
+              onChange={v => setConfig({ size: v === 'medium' ? undefined : v })}
+              options={[
+                { value: 'small', label: t('fieldInspector.starSizeSmall') },
+                { value: 'medium', label: t('fieldInspector.starSizeMedium') },
+                { value: 'large', label: t('fieldInspector.starSizeLarge') },
+                { value: 'full', label: t('fieldInspector.starSizeFull') },
+              ]}
+            />
+          </Field>
+        </div>
       );
     case 'scale':
       return (
@@ -1823,6 +1837,7 @@ function ContentSettings({ field }: { field: FormField }) {
             {canUpload() && <VideoUpload onDone={url => setConfig({ url, file: true })} />}
           </div>
         </Field>
+        {config.url && known && <VideoPreview src={config.file ? { kind: 'file', src: config.url } : (known as { kind: 'iframe' | 'file'; src: string })} />}
         {caption}
       </div>
     );
@@ -2058,6 +2073,21 @@ function HiddenSettings({ field }: { field: FormField }) {
       <Field label={t('fieldInspector.fieldKey')} hint={t('fieldInspector.hiddenKeyHint', { token: `{{field:${field.model}}}` })}>
         <TextInput mono value={field.model} onInput={v => updateField(field.id, { model: v.replace(/[^\w.-]/g, ''), inputName: v.replace(/[^\w.-]/g, '') })} />
       </Field>
+    </div>
+  );
+}
+
+/** The chosen video, playable, so people see what they picked. */
+function VideoPreview({ src }: { src: { kind: 'iframe' | 'file'; src: string } }) {
+  const [failed, setFailed] = useState('');
+  if (failed === src.src) return <div class="media-preview is-broken">{t('design.previewFailed')}</div>;
+  return (
+    <div class="media-preview is-video">
+      {src.kind === 'file' ? (
+        <video src={src.src} controls muted playsInline preload="metadata" onError={() => setFailed(src.src)} />
+      ) : (
+        <iframe src={src.src} title={t('fieldInspector.videoUrl')} allow="encrypted-media; picture-in-picture; fullscreen" loading="lazy" />
+      )}
     </div>
   );
 }

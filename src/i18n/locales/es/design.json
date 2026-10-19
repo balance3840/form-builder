@@ -135,5 +135,6 @@
   "fontKind.mono": "Mono",
   "fontKind.display": "Display",
   "fontKind.hand": "Manuscrita",
-  "equalWidth": "Mitades"
+  "equalWidth": "Mitades",
+  "previewFailed": "No se puede mostrar una vista previa. Revisa la dirección."
 }

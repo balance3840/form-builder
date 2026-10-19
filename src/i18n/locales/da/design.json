@@ -135,5 +135,6 @@
   "fontKind.mono": "Mono",
   "fontKind.display": "Display",
   "fontKind.hand": "Håndskrift",
-  "equalWidth": "Halvdele"
+  "equalWidth": "Halvdele",
+  "previewFailed": "Kan ikke vise et eksempel. Tjek adressen."
 }

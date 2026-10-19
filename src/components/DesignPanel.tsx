@@ -11,8 +11,20 @@ import { FontPicker } from './FontPicker';
 import { ColorInput, Field, MoreInAdvanced, Section, Segmented, Select, TextArea, TextInput, Toggle } from './ui';
 
 
-/** A URL box with an upload button. Uploaded images are embedded in the form JSON as data URLs. */
-export function ImagePicker({ value, onChange, placeholder }: { value?: string; onChange: (v: string | undefined) => void; placeholder: string }) {
+/** A preview of the chosen picture, so people see what they picked (an upload or an address). */
+function ImagePreview({ src, compact }: { src: string; compact?: boolean }) {
+  const [failed, setFailed] = useState('');
+  if (failed === src) return compact ? <span class="media-thumb is-broken" title={t('design.previewFailed')}><Icon name="x" size={12} /></span> : <div class="media-preview is-broken">{t('design.previewFailed')}</div>;
+  if (compact) return <img class="media-thumb" src={src} alt="" onError={() => setFailed(src)} />;
+  return (
+    <a class="media-preview" href={src.startsWith('data:') ? undefined : src} target="_blank" rel="noreferrer">
+      <img src={src} alt="" onError={() => setFailed(src)} />
+    </a>
+  );
+}
+
+/** A URL box with an upload button and a preview. Uploaded images are embedded in the form JSON as data URLs. `compact`: a small thumbnail in the row (lists of options). */
+export function ImagePicker({ value, onChange, placeholder, compact }: { value?: string; onChange: (v: string | undefined) => void; placeholder: string; compact?: boolean }) {
   const [busy, setBusy] = useState(false);
   const isData = !!value && value.startsWith('data:');
   const hosted = canUpload();
@@ -36,8 +48,9 @@ export function ImagePicker({ value, onChange, placeholder }: { value?: string; 
     reader.onload = () => onChange(String(reader.result));
     reader.readAsDataURL(file);
   };
-  return (
+  const row = (
     <div class="image-picker">
+      {compact && value && <ImagePreview src={value} compact />}
       <TextInput value={isData ? '' : value} placeholder={isData ? t('design.uploadedImage') : placeholder} onInput={v => onChange(v.trim() || undefined)} />
       <label class={`btn small ${busy ? 'is-busy' : ''}`} title={t('design.uploadTitle')}>
         <Icon name="upload" size={14} /> {busy ? t('design.uploading') : t('common.upload')}
@@ -59,6 +72,13 @@ export function ImagePicker({ value, onChange, placeholder }: { value?: string; 
           <Icon name="x" size={14} />
         </button>
       )}
+    </div>
+  );
+  if (compact || !value || !/^(https?:|data:image\/|blob:)/i.test(value)) return row;
+  return (
+    <div class="image-picker-wrap">
+      <ImagePreview src={value} />
+      {row}
     </div>
   );
 }
