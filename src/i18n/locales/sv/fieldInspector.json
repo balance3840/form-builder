@@ -449,5 +449,5 @@
   "truncateLimit": "Gräns",
   "truncateViewMore": "Knappen ”Visa mer”",
   "truncateTooltip": "Verktygstips",
-  "truncateHint": "Gäller där svaret bara läses: skrivskyddade fält och sparade svar."
+  "truncateHint": "Visa bara början av en lång text – resten är ett klick bort."
 }

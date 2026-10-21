@@ -449,5 +449,5 @@
   "truncateLimit": "Limit",
   "truncateViewMore": "\"View more\" button",
   "truncateTooltip": "Tooltip",
-  "truncateHint": "Applies where the answer is only read: read-only fields and saved responses."
+  "truncateHint": "Show only the start of a long text, with the rest one click away."
 }

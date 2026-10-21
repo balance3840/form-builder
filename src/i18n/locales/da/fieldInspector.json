@@ -449,5 +449,5 @@
   "truncateLimit": "Grænse",
   "truncateViewMore": "Knappen »Vis mere«",
   "truncateTooltip": "Værktøjstip",
-  "truncateHint": "Gælder, hvor svaret kun læses: skrivebeskyttede felter og gemte svar."
+  "truncateHint": "Vis kun starten af en lang tekst – resten er ét klik væk."
 }

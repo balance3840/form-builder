@@ -167,6 +167,45 @@ export function ModalActions({ field }: { field: FormField }) {
   );
 }
 
+/* ------------------------------------------------------------ truncate */
+
+/** "Cut long text short" for a text block / message box: after N lines or characters, with a "View more" button or a tooltip. */
+export function TruncateSettings({ field }: { field: FormField }) {
+  const truncate = configOf(field).truncate as { by?: string; limit?: number; mode?: string } | undefined;
+  const set = useConfig(field);
+  const by = truncate ? truncate.by || 'lines' : 'off';
+  return (
+    <div class="stack">
+      <Field label={t('fieldInspector.truncate')} hint={t('fieldInspector.truncateHint')}>
+        <Segmented
+          value={by}
+          onChange={v => set({ truncate: v === 'off' ? undefined : { by: v, limit: truncate?.limit || (v === 'lines' ? 5 : 300), mode: truncate?.mode || 'viewMore' } })}
+          options={[
+            { value: 'off', label: t('fieldInspector.truncateOff') },
+            { value: 'lines', label: t('fieldInspector.truncateLines') },
+            { value: 'characters', label: t('fieldInspector.truncateChars') },
+          ]}
+        />
+      </Field>
+      {truncate && (
+        <>
+          <Field label={t('fieldInspector.truncateLimit')}>
+            <NumberInput value={truncate.limit} min={1} onInput={v => set({ truncate: { ...truncate, limit: v } })} />
+          </Field>
+          <Segmented
+            value={truncate.mode || 'viewMore'}
+            onChange={v => set({ truncate: { ...truncate, mode: v } })}
+            options={[
+              { value: 'viewMore', label: t('fieldInspector.truncateViewMore') },
+              { value: 'tooltip', label: t('fieldInspector.truncateTooltip') },
+            ]}
+          />
+        </>
+      )}
+    </div>
+  );
+}
+
 /* --------------------------------------------------------------- callout */
 
 export function CalloutSettings({ field }: { field: FormField }) {
@@ -192,6 +231,7 @@ export function CalloutSettings({ field }: { field: FormField }) {
       <Field label={t('blocks.text')} hint={t('blocks.textHint')}>
         <DataText multiline rows={3} value={field.content} onInput={v => updateField(field.id, { content: v || undefined })} />
       </Field>
+      <TruncateSettings field={field} />
       <div class="ui-hint">{t('blocks.calloutTip')}</div>
     </div>
   );

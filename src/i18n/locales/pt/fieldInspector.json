@@ -449,5 +449,5 @@
   "truncateLimit": "Limite",
   "truncateViewMore": "Botão «Ver mais»",
   "truncateTooltip": "Dica",
-  "truncateHint": "Aplica-se onde a resposta só é lida: campos só de leitura e respostas guardadas."
+  "truncateHint": "Mostra só o início de um texto longo, com o resto a um clique."
 }

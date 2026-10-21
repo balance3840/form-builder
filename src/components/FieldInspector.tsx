@@ -5,7 +5,7 @@ import { LIKERT_SCALES, canRequire, fieldTypeDescription, fieldTypeLabel, hasOpt
 import { ROW_PRESETS, notify, allFields, ancestorsOf, doc, duplicateField, locate, logicSources, moveOutOfRow, requestRemoveField, selectedId, setRowConfig, setRowSpans, unwrapRow, updateField, wrapInRow } from '../store';
 import { SEARCH_EXAMPLES } from '../addressSources';
 import { ProxyHelp } from './SecurityHelp';
-import { ButtonActions, ButtonSettings, CalloutSettings, ModalActions, ModalSettings, RepeaterBehavior, RepeaterLimits, RepeaterPresets, RepeaterSettings, SectionSettings, SignatureSettings, StepPanel, TabsSettings } from './BlockInspectors';
+import { ButtonActions, ButtonSettings, CalloutSettings, ModalActions, ModalSettings, RepeaterBehavior, RepeaterLimits, RepeaterPresets, RepeaterSettings, SectionSettings, SignatureSettings, StepPanel, TabsSettings, TruncateSettings } from './BlockInspectors';
 import { MAX_VIDEO_UPLOAD, canUpload, prefillSources, uploadMedia } from '../host';
 import { Logic } from './LogicEditor';
 import { isKeyLocked } from '../templateLease';
@@ -79,9 +79,12 @@ function Question({ field }: { field: FormField }) {
   return (
     <div class="stack">
       {isParagraph ? (
-        <Field label={t('fieldInspector.text')}>
-          <DataText multiline rows={4} exceptId={field.id} value={field.content} onInput={v => set({ content: v })} />
-        </Field>
+        <>
+          <Field label={t('fieldInspector.text')}>
+            <DataText multiline rows={4} exceptId={field.id} value={field.content} onInput={v => set({ content: v })} />
+          </Field>
+          <TruncateSettings field={field} />
+        </>
       ) : (
         <>
           {isSingleCheck ? (
@@ -1096,49 +1099,18 @@ function TypeSettings({ field }: { field: FormField }) {
       );
     case 'textarea': {
       const rows = (field.attributes && field.attributes.rows) || 4;
-      const truncate = config.truncate as { by?: string; limit?: number; mode?: string } | undefined;
-      const by = truncate ? truncate.by || 'lines' : 'off';
-      const setTruncate = (next: { by?: string; limit?: number; mode?: string } | undefined) => setConfig({ truncate: next });
       return (
-        <>
-          <Field label={t('fieldInspector.height')}>
-            <Segmented
-              value={rows}
-              onChange={v => set({ attributes: { ...(field.attributes || {}), rows: v } })}
-              options={[
-                { value: 2, label: t('fieldInspector.small') },
-                { value: 4, label: t('fieldInspector.medium') },
-                { value: 8, label: t('fieldInspector.large') },
-              ]}
-            />
-          </Field>
-          <Field label={t('fieldInspector.truncate')} hint={t('fieldInspector.truncateHint')}>
-            <Segmented
-              value={by}
-              onChange={v => setTruncate(v === 'off' ? undefined : { by: v, limit: truncate?.limit || (v === 'lines' ? 5 : 300), mode: truncate?.mode || 'viewMore' })}
-              options={[
-                { value: 'off', label: t('fieldInspector.truncateOff') },
-                { value: 'lines', label: t('fieldInspector.truncateLines') },
-                { value: 'characters', label: t('fieldInspector.truncateChars') },
-              ]}
-            />
-          </Field>
-          {truncate && (
-            <>
-              <Field label={t('fieldInspector.truncateLimit')}>
-                <NumberInput value={truncate.limit} min={1} onInput={v => setTruncate({ ...truncate, limit: v })} />
-              </Field>
-              <Segmented
-                value={truncate.mode || 'viewMore'}
-                onChange={v => setTruncate({ ...truncate, mode: v })}
-                options={[
-                  { value: 'viewMore', label: t('fieldInspector.truncateViewMore') },
-                  { value: 'tooltip', label: t('fieldInspector.truncateTooltip') },
-                ]}
-              />
-            </>
-          )}
-        </>
+        <Field label={t('fieldInspector.height')}>
+          <Segmented
+            value={rows}
+            onChange={v => set({ attributes: { ...(field.attributes || {}), rows: v } })}
+            options={[
+              { value: 2, label: t('fieldInspector.small') },
+              { value: 4, label: t('fieldInspector.medium') },
+              { value: 8, label: t('fieldInspector.large') },
+            ]}
+          />
+        </Field>
       );
     }
     case 'search':
