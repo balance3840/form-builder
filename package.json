@@ -1,6 +1,6 @@
 {
   "name": "@restrella/form-builder",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "type": "module",
   "description": "Visual builder for @restrella/form-generator forms. Standalone app, or embed it with mountFormBuilder().",
   "homepage": "https://balance3840.github.io/form-builder/",
