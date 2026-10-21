@@ -441,5 +441,13 @@
   "logoTop": "Top",
   "logoBottom": "Bottom",
   "keyLockedDelete": "This field is needed to read the answers and can’t be deleted.",
-  "platformChoices": "The choices are filled in by the application when the form is shown, so you don’t edit them here. The ones in the preview are only examples."
+  "platformChoices": "The choices are filled in by the application when the form is shown, so you don’t edit them here. The ones in the preview are only examples.",
+  "truncate": "Cut long answers short",
+  "truncateOff": "Off",
+  "truncateLines": "Lines",
+  "truncateChars": "Characters",
+  "truncateLimit": "Limit",
+  "truncateViewMore": "\"View more\" button",
+  "truncateTooltip": "Tooltip",
+  "truncateHint": "Applies where the answer is only read: read-only fields and saved responses."
 }

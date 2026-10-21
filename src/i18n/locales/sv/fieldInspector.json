@@ -441,5 +441,13 @@
   "logoTop": "Ovanför",
   "logoBottom": "Nedanför",
   "keyLockedDelete": "Fältet behövs för att läsa svaren och kan inte tas bort.",
-  "platformChoices": "Alternativen fylls i av applikationen när formuläret visas, så du ändrar dem inte här. De i förhandsvisningen är bara exempel."
+  "platformChoices": "Alternativen fylls i av applikationen när formuläret visas, så du ändrar dem inte här. De i förhandsvisningen är bara exempel.",
+  "truncate": "Korta av långa svar",
+  "truncateOff": "Av",
+  "truncateLines": "Rader",
+  "truncateChars": "Tecken",
+  "truncateLimit": "Gräns",
+  "truncateViewMore": "Knappen ”Visa mer”",
+  "truncateTooltip": "Verktygstips",
+  "truncateHint": "Gäller där svaret bara läses: skrivskyddade fält och sparade svar."
 }

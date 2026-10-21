@@ -1096,18 +1096,49 @@ function TypeSettings({ field }: { field: FormField }) {
       );
     case 'textarea': {
       const rows = (field.attributes && field.attributes.rows) || 4;
+      const truncate = config.truncate as { by?: string; limit?: number; mode?: string } | undefined;
+      const by = truncate ? truncate.by || 'lines' : 'off';
+      const setTruncate = (next: { by?: string; limit?: number; mode?: string } | undefined) => setConfig({ truncate: next });
       return (
-        <Field label={t('fieldInspector.height')}>
-          <Segmented
-            value={rows}
-            onChange={v => set({ attributes: { ...(field.attributes || {}), rows: v } })}
-            options={[
-              { value: 2, label: t('fieldInspector.small') },
-              { value: 4, label: t('fieldInspector.medium') },
-              { value: 8, label: t('fieldInspector.large') },
-            ]}
-          />
-        </Field>
+        <>
+          <Field label={t('fieldInspector.height')}>
+            <Segmented
+              value={rows}
+              onChange={v => set({ attributes: { ...(field.attributes || {}), rows: v } })}
+              options={[
+                { value: 2, label: t('fieldInspector.small') },
+                { value: 4, label: t('fieldInspector.medium') },
+                { value: 8, label: t('fieldInspector.large') },
+              ]}
+            />
+          </Field>
+          <Field label={t('fieldInspector.truncate')} hint={t('fieldInspector.truncateHint')}>
+            <Segmented
+              value={by}
+              onChange={v => setTruncate(v === 'off' ? undefined : { by: v, limit: truncate?.limit || (v === 'lines' ? 5 : 300), mode: truncate?.mode || 'viewMore' })}
+              options={[
+                { value: 'off', label: t('fieldInspector.truncateOff') },
+                { value: 'lines', label: t('fieldInspector.truncateLines') },
+                { value: 'characters', label: t('fieldInspector.truncateChars') },
+              ]}
+            />
+          </Field>
+          {truncate && (
+            <>
+              <Field label={t('fieldInspector.truncateLimit')}>
+                <NumberInput value={truncate.limit} min={1} onInput={v => setTruncate({ ...truncate, limit: v })} />
+              </Field>
+              <Segmented
+                value={truncate.mode || 'viewMore'}
+                onChange={v => setTruncate({ ...truncate, mode: v })}
+                options={[
+                  { value: 'viewMore', label: t('fieldInspector.truncateViewMore') },
+                  { value: 'tooltip', label: t('fieldInspector.truncateTooltip') },
+                ]}
+              />
+            </>
+          )}
+        </>
       );
     }
     case 'search':

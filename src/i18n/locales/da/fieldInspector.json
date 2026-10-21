@@ -441,5 +441,13 @@
   "logoTop": "Over",
   "logoBottom": "Under",
   "keyLockedDelete": "Feltet bruges til at læse svarene og kan ikke slettes.",
-  "platformChoices": "Valgmulighederne sættes ind af applikationen, når formularen vises, så du ikke redigerer dem her. Dem i forhåndsvisningen er kun eksempler."
+  "platformChoices": "Valgmulighederne sættes ind af applikationen, når formularen vises, så du ikke redigerer dem her. Dem i forhåndsvisningen er kun eksempler.",
+  "truncate": "Forkort lange svar",
+  "truncateOff": "Fra",
+  "truncateLines": "Linjer",
+  "truncateChars": "Tegn",
+  "truncateLimit": "Grænse",
+  "truncateViewMore": "Knappen »Vis mere«",
+  "truncateTooltip": "Værktøjstip",
+  "truncateHint": "Gælder, hvor svaret kun læses: skrivebeskyttede felter og gemte svar."
 }

@@ -441,5 +441,13 @@
   "logoTop": "Arriba",
   "logoBottom": "Abajo",
   "keyLockedDelete": "Este campo se necesita para leer las respuestas y no se puede eliminar.",
-  "platformChoices": "Las opciones las rellena la aplicación al mostrar el formulario, así que no se editan aquí. Las de la vista previa son solo ejemplos."
+  "platformChoices": "Las opciones las rellena la aplicación al mostrar el formulario, así que no se editan aquí. Las de la vista previa son solo ejemplos.",
+  "truncate": "Acortar respuestas largas",
+  "truncateOff": "No",
+  "truncateLines": "Líneas",
+  "truncateChars": "Caracteres",
+  "truncateLimit": "Límite",
+  "truncateViewMore": "Botón «Ver más»",
+  "truncateTooltip": "Información emergente",
+  "truncateHint": "Se aplica donde la respuesta solo se lee: campos de solo lectura y respuestas guardadas."
 }
